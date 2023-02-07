@@ -4,6 +4,14 @@ library(data.table)
 suppressMessages(library(ggpubr))
 
 hp <- fread("haplogroups.txt")
+vcf <- fread("clsa_qc.vcf")
+
+# add GWAS linking keys
+ADM_GWAS_COM <- colnames(vcf)[10:26635]
+ADM_GWAS_COM <- gsub("_.*", "", ADM_GWAS_COM)
+
+hp$SampleID <- ADM_GWAS_COM
+colnames(hp) <- c("ADM_GWAS_COM", colnames(hp)[2:5])
 
 # add in subgroupings for haplogroups
 hp$subgroup1 <- substr(hp$Haplogroup, start = 1, stop = 1)
