@@ -99,6 +99,4 @@ message("----- ", dim(mSetSqFlt)[1], " probe(s) remaining for analysis") #----- 
 #Calculate methylation beta values
 bVals <- getBeta(mSetSqFlt)
 
-write.csv(bVals, file = "../../results/epigenetics/bVals_Noob.csv", quotes = FALSE, rownames = TRUE)
-
-
+write.csv(bVals, file = "../../results/epigenetics/bVals.csv", quotes = FALSE, rownames = TRUE)
